@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-app: #f4f6fa;
+    --bg-card: #ffffff;
+    --bg-card-sub: #f8fafc;
+    --border-card: #e2e8f0;
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    --brand-primary: #0284c7;
+    --brand-accent: #0ea5e9;
+    --brand-teal: #0d9488;
+    --trend-up: #10b981;
+    --trend-down: #ef4444;
+    --trend-warn: #f59e0b;
+    --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.05);
+    --shadow-elevated: 0 10px 25px -5px rgb(0 0 0 / 0.07), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+    color-scheme: light;
+  }
+
+  :root.dark, :root[data-theme="dark"] {
+    --bg-app: #0b0f19;
+    --bg-card: #121826;
+    --bg-card-sub: #182234;
+    --border-card: #1f2b3e;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --brand-primary: #38bdf8;
+    --brand-accent: #06b6d4;
+    --brand-teal: #2dd4bf;
+    --trend-up: #34d399;
+    --trend-down: #f87171;
+    --trend-warn: #fbbf24;
+    --shadow-card: 0 2px 6px 0 rgb(0 0 0 / 0.4);
+    --shadow-elevated: 0 14px 30px -4px rgb(0 0 0 / 0.6);
+    color-scheme: dark;
+  }
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+:root.dark ::-webkit-scrollbar-thumb,
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #253347;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Glow effects */
+.glow-cyan {
+  box-shadow: 0 0 25px -4px rgba(6, 182, 212, 0.25);
+}
+.glow-primary {
+  box-shadow: 0 0 25px -4px rgba(2, 132, 199, 0.3);
+}

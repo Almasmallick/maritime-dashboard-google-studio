@@ -1,0 +1,6 @@
+{
+  "name": "NaviQ Maritime Terminal",
+  "description": "Global maritime freight intelligence and trade radar terminal tracking ocean spot rates, blank sailings, and strategic chokepoints.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

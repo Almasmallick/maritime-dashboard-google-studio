@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MARITIME INTELLIGENCE · Trade, Freight &amp; Risk Radar</title>
+<style>
+:root{--bg:#0a1220;--p:#101b2e;--p2:#14233a;--bd:#223350;--tx:#d8e2f0;--mu:#8da0bb;--teal:#3fb6a8;--amb:#e0a43a;--red:#e5604f;--grn:#4fc27b;color-scheme:dark}
+:root[data-theme=light]{--bg:#eef2f7;--p:#fff;--p2:#f3f6fa;--bd:#cfd8e4;--tx:#14202f;--mu:#566b86;--teal:#12857a;--amb:#a96f0a;--red:#c43a2a;--grn:#1d8a4b;color-scheme:light}
+*{box-sizing:border-box}html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--tx);font:13px/1.45 -apple-system,"Segoe UI",Roboto,sans-serif;display:flex;padding-top:env(safe-area-inset-top,0)}
+.n{font-family:ui-monospace,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums}
+aside{width:178px;background:var(--p);border-right:1px solid var(--bd);padding:12px 0;flex:none;overflow:auto}
+.logo{padding:0 14px 12px;font-weight:700;letter-spacing:.12em;font-size:11px;color:var(--teal)}
+.logo small{display:block;color:var(--mu);font-weight:400;letter-spacing:0}
+nav button{display:block;width:100%;text-align:left;background:none;border:0;border-left:2px solid transparent;color:var(--mu);padding:8px 14px;font:inherit;cursor:pointer}
+nav button:hover{color:var(--tx)}nav button.on{color:var(--tx);border-left-color:var(--teal);background:var(--p2)}
+main{flex:1;min-width:0;display:flex;flex-direction:column;height:100%}
+.top{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:8px 16px;border-bottom:1px solid var(--bd);background:var(--p)}
+.top label{color:var(--mu);font-size:11px}
+select,input,button.b{background:var(--p2);color:var(--tx);border:1px solid var(--bd);border-radius:3px;padding:4px 7px;font:inherit}
+button.b{cursor:pointer}button.b:hover{border-color:var(--teal)}
+.tag{padding:2px 7px;border:1px solid var(--teal);color:var(--teal);border-radius:3px;font-size:10px;letter-spacing:.05em;margin-left:auto}
+#v{flex:1;overflow:auto;padding:14px 16px 28px}
+h2{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin:0 0 8px;font-weight:600}
+.g{display:grid;gap:12px;margin-bottom:12px}.g2{grid-template-columns:1fr 1fr}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.g2,.g4{grid-template-columns:1fr}aside{width:56px}.logo,nav button span{display:none}}
+.c{background:var(--p);border:1px solid var(--bd);border-radius:4px;padding:11px 13px;min-width:0}
+.k .v{font-size:20px;margin:2px 0}.k .s{color:var(--mu);font-size:11px}
+.up{color:var(--grn)}.dn{color:var(--red)}.wa{color:var(--amb)}.mu{color:var(--mu)}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:5px 7px;border-bottom:1px solid var(--bd);vertical-align:top}
+th{color:var(--mu);font-weight:600;font-size:11px;white-space:nowrap}th[data-s]{cursor:pointer}th:hover{color:var(--tx)}
+tr.cl{cursor:pointer}tr.cl:hover{background:var(--p2)}
+.badge{font-size:10px;padding:1px 6px;border-radius:3px;border:1px solid;white-space:nowrap}
+.sx{overflow-x:auto}
+.det{background:var(--p2);border-left:2px solid var(--teal);padding:8px 12px;margin:8px 0;font-size:12px}.det b{color:var(--teal);font-weight:600}
+.brief div{margin-bottom:6px}.brief b{font-size:10px;letter-spacing:.1em;color:var(--teal)}
+svg text{fill:var(--mu);font-size:10px}
+.f{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-bottom:8px}.f label{display:block;color:var(--mu);font-size:11px}.f input,.f select{width:100%}
+a{color:var(--teal)}
+.s{font-size:11px;color:var(--mu)}
+.empty{padding:22px;text-align:center;color:var(--mu)}
+</style><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap"><style>
+:root{--bg:#07101c;--p:#0d1b2d;--p2:#12253b;--bd:#1f3552;--tx:#e4ecf5;--mu:#8ea3bd;--teal:#5cc2b4;--amb:#dcaa4a;--red:#ec7563;--grn:#62cc8b;--ser:Fraunces,"Iowan Old Style",Georgia,serif}
+:root[data-theme=light]{--bg:#e9eff6;--p:#ffffff;--p2:#f0f4f9;--bd:#d0dbe8;--tx:#13202f;--mu:#556a84;--teal:#0f8176;--amb:#94610a;--red:#c03b2b;--grn:#1b7f47}
+*{scrollbar-width:thin;scrollbar-color:var(--bd) transparent}
+body{font-family:"Instrument Sans",-apple-system,"Segoe UI",Roboto,sans-serif;font-size:13.5px;background:radial-gradient(900px 500px at 85% -8%,rgba(92,194,180,.09),transparent 65%),var(--bg)}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.9;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='640' viewBox='0 0 640 640' fill='none' stroke='rgba(92,194,180,0.075)' stroke-width='1'%3E%3Cpath d='M120 320c0-110 90-200 210-190s190 110 170 220-120 170-230 150S120 430 120 320z'/%3E%3Cpath d='M165 320c0-85 70-155 160-148s150 85 135 170-95 130-180 118S165 405 165 320z'/%3E%3Cpath d='M210 322c0-60 50-110 115-105s110 62 98 122-68 92-128 84-85-41-85-101z'/%3E%3Cpath d='M255 325c0-35 30-65 68-62s64 36 58 72-40 54-76 50-50-24-50-60z'/%3E%3Cpath d='M-40 80c80-60 180-70 250-30M-60 140c90-60 190-70 270-30M-80 200c100-60 200-70 290-30'/%3E%3Cpath d='M420 560c70-70 170-90 250-50M400 610c80-70 190-90 280-45'/%3E%3C/svg%3E")}
+:root[data-theme=light] body::before{opacity:.55}
+aside,main{position:relative;z-index:1}
+.n{font-family:inherit;font-variant-numeric:tabular-nums}
+aside{width:216px;padding:20px 0;background:color-mix(in srgb,var(--p) 92%,transparent);backdrop-filter:blur(6px)}
+.logo{display:flex;gap:11px;align-items:center;padding:0 20px 22px;font:600 15px/1.2 var(--ser);letter-spacing:0;color:var(--tx)}
+.logo small{font:400 11.5px/1.3 "Instrument Sans",sans-serif;color:var(--mu);margin-top:3px}
+nav button{display:flex;gap:11px;align-items:center;padding:10px 20px;border-left-width:3px;font-size:13.5px}
+nav button svg{flex:none;opacity:.8}nav button.on{background:linear-gradient(90deg,rgba(92,194,180,.12),transparent)}nav button.on svg{color:var(--teal);opacity:1}
+.top{padding:12px 26px;gap:10px;background:color-mix(in srgb,var(--bg) 70%,transparent);backdrop-filter:blur(8px)}
+.top label{font-size:12px;margin-left:6px}
+select,input,button.b{height:32px;border-radius:7px;font-size:13px;padding:0 10px}
+select:hover,input:hover{border-color:var(--mu)}
+.tag{display:flex;gap:7px;align-items:center;border:0;background:rgba(92,194,180,.12);color:var(--teal);border-radius:99px;padding:5px 12px;font-size:12px;letter-spacing:0}
+.tag i{width:6px;height:6px;border-radius:50%;background:currentColor}
+#v{padding:26px 28px 48px}
+.hd{margin-bottom:20px}.hd h1{font:500 30px/1.15 var(--ser);letter-spacing:-.015em;margin:0 0 6px}.hd p{margin:0;color:var(--mu);max-width:68ch}
+h2{font-size:13.5px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--tx);margin:0 0 14px;line-height:1.35}
+.g{gap:16px;margin-bottom:16px}
+.c{background:color-mix(in srgb,var(--p) 90%,transparent);border-radius:10px;padding:18px 20px}
+.g4{gap:0;background:color-mix(in srgb,var(--p) 90%,transparent);border:1px solid var(--bd);border-radius:12px;overflow:hidden}
+.g4 .c{background:none;border:0;border-radius:0;border-right:1px solid var(--bd);padding:20px 22px}.g4 .c:last-child{border-right:0}
+.k h2{color:var(--mu);font-weight:500;font-size:12.5px;margin:0}
+.k .v{font:500 36px/1.1 var(--ser);letter-spacing:-.02em;margin:10px 0 8px}.k .s{font-size:12.5px;line-height:1.45}
+table{font-size:13px}th,td{padding:10px 12px}th{font-size:12px;font-weight:500;color:var(--mu);border-bottom:1px solid var(--mu)}
+tr:hover td{background:rgba(92,194,180,.05)}tr.cl td:first-child{font-weight:500}
+.det{background:rgba(92,194,180,.07);border-left-width:3px;border-radius:0 8px 8px 0;padding:14px 18px;line-height:1.65;margin-top:14px}
+.badge{border-radius:99px;padding:2px 10px;font-size:11.5px;background:color-mix(in srgb,currentColor 12%,transparent)}
+.brief div{margin-bottom:12px;line-height:1.6}.brief b{display:inline-block;text-transform:lowercase;letter-spacing:0;font-size:12.5px;color:var(--amb);font-weight:600}.brief b::first-letter{text-transform:uppercase}
+svg text{font-size:11px;font-family:inherit}svg line{stroke-dasharray:2 5}svg polyline{stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}svg rect{rx:3}
+.f label{font-size:12px;margin-bottom:3px}.s{line-height:1.5}.empty{padding:28px}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+@media(max-width:900px){aside{width:60px}.logo span,nav button span{display:none}.logo{padding:0 15px 18px}nav button{padding:11px 18px}#v{padding:18px 14px 40px}.hd h1{font-size:24px}.g4{grid-template-columns:1fr 1fr}.g4 .c:nth-child(2){border-right:0}.g4 .c:nth-child(-n+2){border-bottom:1px solid var(--bd)}.k .v{font-size:28px}.top{padding:10px 14px}}
+</style></head><body>
+<aside><div class="logo"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" style="flex:none"><circle cx="16" cy="16" r="13" style="color:var(--teal)"/><path d="M16 4v24M4 16h24" style="color:var(--teal);opacity:.4"/><path d="M16 8l4 8-4 8-4-8z" fill="var(--amb)" stroke="none"/></svg><span>Maritime Intelligence<small>Trade, freight and risk radar</small></span></div><nav id="nav"></nav></aside>
+<main>
+<div class="top">
+<label>Lane</label><select id="fl"></select>
+<label>Compare to</label><select id="fr"><option value="0">20 Aug</option><option value="1" selected>8 Oct</option></select>
+<label>Search</label><input id="fs" placeholder="filter tables" size="12">
+<button class="b" id="th">Light/Dark</button><button class="b" id="dl">Export CSV</button>
+<span class="tag"><i></i>Sourced snapshot of 24 Oct 2026, not streaming</span></div>
+<div id="v"></div></main>
+<script>
+// Every value below was read from the cited source on 24 Oct 2026. "~" = approximated from source text. null = not published/unavailable.
+const D={
+wci:[["20 Aug",4526],["8 Oct",4351],["15 Oct",4485],["22 Oct",4585]],
+lanes:[ // WCI, USD/FEU, Drewry. a=[20 Aug, 8 Oct, 22 Oct]
+{id:"SHA-LAX",n:"Shanghai → Los Angeles",a:[6802,7624,8007]},
+{id:"SHA-NYC",n:"Shanghai → New York",a:[9507,10220,10166]},
+{id:"SHA-RTM",n:"Shanghai → Rotterdam",a:[4401,3337,3632]},
+{id:"SHA-GOA",n:"Shanghai → Genoa",a:[4955,null,4152]},
+{id:"RTM-NYC",n:"Rotterdam → New York",a:[null,null,3181]},
+{id:"NYC-RTM",n:"New York → Rotterdam",a:[null,null,1158]},
+{id:"LAX-SHA",n:"Los Angeles → Shanghai",a:[null,null,847]},
+{id:"RTM-SHA",n:"Rotterdam → Shanghai",a:[null,null,646]}],
+dates:["20 Aug","8 Oct","22 Oct"],
+fbx:[ // Freightos FBX, USD/FEU, points quoted in weekly updates
+{n:"Asia → US West Coast (FBX01)",p:[["14 Jul","~7,500",7500],["18 Aug","~7,400",7400],["20 Oct","8,126",8126]]},
+{n:"Asia → US East Coast (FBX03)",p:[["14 Jul","~9,000",9000],["18 Aug","~9,400",9400],["20 Oct","9,700",9700]]},
+{n:"Asia → N. Europe (FBX11)",p:[["14 Jul","~5,800",5800],["20 Oct","3,442",3442]]},
+{n:"Asia → Mediterranean (FBX13)",p:[["18 Aug","~5,000",5000],["20 Oct","3,927",3927]]}],
+opps:[
+{n:"India engineering, electronics & petroleum exports",t:"Trade flow",sc:"India → world",m:"Sep merch. exports $44.40B",v:23.04,ev:"Exports +23.04% YoY; Apr–Sep $259.89B (+18.51%); exports grew >20% two months running (MoCI)",who:"Engineering/electronics exporters; freight forwarders at JNPT/Mundra",rk:"Imports $74.61B (+8%); H1 deficit widened to $177.64B vs $156.88B; ocean rates and Gulf disruption can erode margin",cf:"High (official data) / commercial upside: hypothesis",lk:"https://www.jmfinancialservices.in/market-news-and-insights/1737084"},
+{n:"Nhava Sheva / Mundra as Gulf-diversion hubs",t:"Port connectivity",sc:"W. India",m:"Ships naming NSh as arrival port 21→36 (undated, mid-2026)",v:null,ev:"Carriers treat NSh/Mundra as alternatives to Gulf ports; CMA CGM India–UAE shuttle via Sohar/Fujairah planned",who:"Transshipment, exporters needing Gulf access",rk:"Congestion, truck-driver shortage, yard density (reports May–Jul 2026); no current wait-time data found",cf:"Low–Medium (trade press, dated)",lk:"https://theloadstar.com/india-waives-storage-fees-as-ports-and-carriers-tackle-trade-disruption/"},
+{n:"Importer contract timing on Asia–Europe",t:"Freight",sc:"Asia → Europe",m:"WCI SHA–RTM −17.5% vs 20 Aug",v:null,ev:"Spot rates well below summer; Suez returns expected to be full in Q1 (Freightos) adding effective capacity; GRIs now pushing up for 2027 contracts",who:"Importers/forwarders negotiating 2027 contracts",rk:"Hormuz/Houthi shocks can reverse; forwarders doubt GRIs stick",cf:"Medium (hypothesis, not forecast)",lk:"https://www.freightos.com/freight-resources/red-sea-container-traffic-set-for-full-return-in-q1-october-20-2026-update/"},
+{n:"Transatlantic container lane",t:"Freight",sc:"N. Europe ↔ US",m:"Spot ~$2,850/FEU, ~+25% YoY",v:25,ev:"Spot up only ~$200 since late Sep despite announced October increases (Freightos)",who:"Carriers; importers watching bunker pass-through",rk:"Elevated bunker cost; price ≠ demand",cf:"Medium",lk:"https://www.freightos.com/freight-resources/red-sea-container-traffic-set-for-full-return-in-q1-october-20-2026-update/"}],
+falls:[
+{n:"Asia→N. Europe spot (WCI SHA–RTM)",k:"SHA-RTM",ch:null,b:"vs baseline",cl:"Emerging warning",kind:"price",dr:"Rates fell after summer peak, rebounding on blank sailings (8 announced next week vs 2) and GRIs",ex:"Carriers (revenue); importers benefit",cf:"Volumes + whether blank sailings persist",lk:"https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry"},
+{n:"Asia→Genoa spot (WCI SHA–GOA)",k:"SHA-GOA",ch:null,b:"vs 20 Aug",cl:"Persistent decline",kind:"price",dr:"Weaker Asia–Med demand/pricing after peak; Suez return adds capacity (hypothesis)",ex:"Med-bound shippers benefit; carriers lose",cf:"Asia–Med booking data, Suez transit counts",lk:"https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry"},
+{n:"Freightos Asia→N. Europe (FBX11)",k:"FBX3",ch:null,b:"14 Jul ~5,800 → 20 Oct 3,442",cl:"Persistent decline",kind:"price",dr:"Post-peak demand, returning capacity; recent +6% week on GRIs",ex:"Carriers; importers benefit",cf:"Contract vs spot gap",lk:"https://www.freightos.com/freight-resources/red-sea-container-traffic-set-for-full-return-in-q1-october-20-2026-update/"},
+{n:"Global container port throughput (Drewry index)",k:null,ch:-1.3,b:"YoY, Jul 2026 (−3.3% MoM)",cl:"Emerging warning",kind:"demand",dr:"Volume signal, not price; one month only",ex:"Port operators, carriers",cf:"Aug/Sep releases",lk:"https://www.drewry.co.uk/trackers-and-indices/latest-trackers-and-indices"},
+{n:"Asia→US East Coast daily index",k:null,ch:-7.7,b:"week to 23 Oct (10,754→9,927)",cl:"Temporary volatility",kind:"price",dr:"Single-week move; different index from FBX weekly (not comparable)",ex:"Carriers on USEC",cf:"Next 2 weekly FBX prints",lk:"https://theedgemalaysia.com/node/823074"},
+{n:"Gulf security (Hormuz, Gulf-bound shipping)",k:null,ch:null,b:"qualitative",cl:"Sharp deterioration",kind:"ops",dr:"Iranian attacks stepped up; a Dubai-linked container ship sunk last week; Shanghai–Jebel Ali $8,451/FEU (Drewry IACI)",ex:"India–Gulf trade, Gulf-bound cargo, fuel-sensitive lanes",cf:"Hormuz transit counts, war-risk premia",lk:"https://www.freightos.com/freight-resources/red-sea-container-traffic-set-for-full-return-in-q1-october-20-2026-update/"}],
+chokes:[
+["Strait of Hormuz","Attacks escalating; some container ships transiting; oil ~$100","Freightos 20 Oct","dn"],
+["Bab el-Mandeb / Red Sea","Houthi risk rising, yet carriers returning; full return est. Q1 2027","Freightos 20 Oct","wa"],
+["Suez Canal","55 sailings wk42 (54 wk41)","Drewry 22 Oct","wa"],
+["Shanghai port waiting","97h (wk38) → 38h (wk42), −61%","Drewry 22 Oct","up"],
+["Nhava Sheva / Mundra","7-day avg vessel wait ~2.5 days as of 19 May (stale); no current figure found","K+N advisory","mu"],
+["Jeddah (India–ME lane)","Waits reported 5–10 days; some feeders suspended calls (mid-2026, undated)","FreshPlaza","wa"]],
+src:[
+["Drewry World Container Index","22 Oct 2026","https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry","Composite + 8 lanes; 20 Aug & 8 Oct values from Drewry-derived reports (hellenicshippingnews, marketintellabs). Free headline data; detailed history licensed."],
+["Freightos Baltic Index weekly update","20 Oct 2026","https://www.freightos.com/freight-resources/red-sea-container-traffic-set-for-full-return-in-q1-october-20-2026-update/","FBX weekly; earlier points (~) from 14 Jul and 18 Aug updates, quoted in text, approximate."],
+["Drewry Intra-Asia Container Index","22 Oct 2026","https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/intra-asia-container-index","IACI $1,459/FEU; Shanghai–Jebel Ali $8,451."],
+["Drewry trackers (port throughput)","1 Oct 2026","https://www.drewry.co.uk/trackers-and-indices/latest-trackers-and-indices","Jul 2026 data; one month lag."],
+["Ministry of Commerce, India (via press)","15 Oct 2026","https://www.jmfinancialservices.in/market-news-and-insights/1737084","Sep 2026 merchandise trade; preliminary, subject to revision."],
+["Baltic Exchange (via The Edge Malaysia)","23 Oct 2026","https://theedgemalaysia.com/node/823074","Asia–USEC daily index; not comparable to FBX weekly."],
+["Not connected","—","","AIS positions, contract rates, GRI database, bunker surcharges, container-level tracking, customs data, current JNPT/Mundra dwell. Shown as unavailable, never estimated."]]
+};
+const $=s=>document.querySelector(s),f0=n=>Math.round(n).toLocaleString(),pc=n=>n==null?"n/a":(n>0?"+":"")+n.toFixed(1)+"%",col=n=>n==null?"mu":n>0?"up":n<0?"dn":"mu";
+const bi=()=>+$("#fr").value,q=()=>$("#fs").value.toLowerCase();
+const last=l=>l.a[2],base=l=>l.a[bi()],chg=l=>base(l)==null?null:(last(l)/base(l)-1)*100;
+const lanes=()=>D.lanes.filter(l=>$("#fl").value==="ALL"||l.id===$("#fl").value);
+const fchg=f=>{const p=f.p;const b=bi()===0&&p.length>2?p[1]:p[0];return (p[p.length-1][2]/b[2]-1)*100};
+D.falls.forEach(f=>{if(f.k&&f.k.startsWith("SHA"))f.ch=chg(D.lanes.find(l=>l.id===f.k));if(f.k==="FBX3")f.ch=(3442/5800-1)*100});
+let view="pulse",sort={},sel=0;
+const V=[["pulse","Command Centre"],["opps","Opportunities"],["falls","Hardest Falls"],["freight","Freight & Capacity"],["ports","Ports & Chokepoints"],["landed","Landed Cost & What-If"],["src","Sources & Gaps"]];
+const IC={pulse:"M1 9h3l2-6 3 10 2-6h4",opps:"M3 13L13 3M6 3h7v7",falls:"M3 3l10 10M6 13h7V6",freight:"M3 13V8M8 13V3M13 13V6",ports:"M8 2v12M4 9c0 3 2 5 4 5s4-2 4-5M5 5h6",landed:"M2 5l6-3 6 3-6 3zM2 9l6 3 6-3",src:"M4 2h6l3 3v9H4zM6 8h5M6 11h5"};
+$("#nav").innerHTML=V.map(([k,t])=>`<button data-k="${k}" title="${t}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="${IC[k]}"/></svg><span>${t}</span></button>`).join("");
+const HD={pulse:["Today's trade pulse","What moved in freight, ports and Indian trade, and what to watch next."],opps:["Where demand is rising","Growth signals with their evidence, risks and who could benefit."],falls:["What is deteriorating","Falls in price, demand and operations, kept separate on purpose."],freight:["Freight rates and capacity","Spot-rate moves by lane against the comparison date you pick above."],ports:["Ports and chokepoints","Latest verified readings. Stale or missing data is marked."],landed:["Landed cost and what-if","Change freight and delay assumptions to see cost and exposure."],src:["Sources and gaps","Where each number came from, and what is not connected."]};
+$("#fl").innerHTML='<option value="ALL">All lanes</option>'+D.lanes.map(l=>`<option value="${l.id}">${l.n}</option>`).join("");
+function srt(a,key,def){const s=sort[key]||(sort[key]=def);return [...a].sort((x,y)=>{let A=s.f(x),B=s.f(y);if(A==null)return 1;if(B==null)return -1;return (A>B?1:A<B?-1:0)*s.d})}
+function th(key,cols,def){const s=sort[key]||(sort[key]=def);return cols.map(([t,f])=>`<th data-s="${key}" data-i="${t}">${t}${s.t===t?(s.d>0?" ▲":" ▼"):""}</th>`).join("")}
+function line(ser,w=520,h=190){const pts=ser.flatMap(s=>s.v.filter(v=>v!=null)),mn=Math.min(...pts),mx=Math.max(...pts),p=34,n=ser[0].v.length,lab=ser[0].x;
+const X=i=>p+i*(w-p-60)/(n-1),Y=v=>h-22-(v-mn)/(mx-mn||1)*(h-40);let o=`<svg viewBox="0 0 ${w} ${h}" width="100%" role="img">`;
+[0,.5,1].forEach(t=>{const v=mn+(mx-mn)*t;o+=`<line x1="${p}" x2="${w-60}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--bd)"/><text x="0" y="${Y(v)+3}">${f0(v)}</text>`});
+lab.forEach((t,i)=>o+=`<text x="${X(i)}" y="${h-6}" text-anchor="middle">${t}</text>`);
+const C=["var(--teal)","var(--amb)","var(--red)","var(--grn)","#8aa4d6"];
+ser.forEach((s,k)=>{const pp=s.v.map((v,i)=>v==null?null:[X(i),Y(v)]).filter(Boolean);o+=`<polyline fill="none" stroke="${C[k%5]}" stroke-width="1.6" points="${pp.map(a=>a.join(",")).join(" ")}"/>`+pp.map(a=>`<circle cx="${a[0]}" cy="${a[1]}" r="2.5" fill="${C[k%5]}"/>`).join("");
+const e=pp[pp.length-1];o+=`<text x="${e[0]+6}" y="${e[1]+3}" style="fill:${C[k%5]}">${s.n}</text>`});return o+"</svg>"}
+function hbars(rows,w=520){const m=Math.max(...rows.map(r=>Math.abs(r.v)),1),h=rows.length*24+6,x0=w/2+50;
+return `<svg viewBox="0 0 ${w} ${h}" width="100%">`+rows.map((r,i)=>{const bw=Math.abs(r.v)/m*(w/2-90);
+return `<text x="0" y="${i*24+16}">${r.l}</text><rect x="${r.v<0?x0-bw:x0}" y="${i*24+5}" width="${bw}" height="14" fill="${r.v<0?"var(--red)":"var(--grn)"}" opacity=".85"/><text x="${r.v<0?x0-bw-4:x0+bw+4}" y="${i*24+16}" text-anchor="${r.v<0?"end":"start"}">${pc(r.v)}</text>`}).join("")+"</svg>"}
+function waterfall(items,w=520,h=210){let t=0;const tot=items.reduce((a,b)=>a+b.v,0)||1,p=30,bw=(w-p)/(items.length+1)-8,Y=v=>h-30-v/tot*(h-50);let o=`<svg viewBox="0 0 ${w} ${h}" width="100%">`;
+items.forEach((it,i)=>{const x=p+i*(bw+8);o+=`<rect x="${x}" y="${Y(t+it.v)}" width="${bw}" height="${Math.max(1,Y(t)-Y(t+it.v))}" fill="${it.hot?"var(--amb)":"var(--teal)"}"/><text x="${x+bw/2}" y="${h-16}" text-anchor="middle">${it.l}</text><text x="${x+bw/2}" y="${Y(t+it.v)-3}" text-anchor="middle">${f0(it.v)}</text>`;t+=it.v});
+const x=p+items.length*(bw+8);return o+`<rect x="${x}" y="${Y(tot)}" width="${bw}" height="${Y(0)-Y(tot)}" fill="var(--tx)" opacity=".75"/><text x="${x+bw/2}" y="${h-16}" text-anchor="middle">Total</text><text x="${x+bw/2}" y="${Y(tot)-3}" text-anchor="middle">${f0(tot)}</text></svg>`}
+const a=(u,t)=>u?`<a href="${u}" target="_blank" rel="noopener">${t||"source"}</a>`:"";
+const R={};
+R.pulse=()=>{const w=D.wci,L=lanes().filter(l=>l.a[0]!=null||l.a[1]!=null);
+return `<div class="g g4">
+<div class="c k"><h2>Drewry WCI composite</h2><div class="v n">$${f0(w[3][1])}</div><div class="s"><span class="up">+2.2% WoW</span> · <span class="up">${pc((w[3][1]/w[1][1]-1)*100)}</span> vs 8 Oct · USD/FEU · 22 Oct</div></div>
+<div class="c k"><h2>Shanghai → Los Angeles</h2><div class="v n">$${f0(8007)}</div><div class="s">${pc(chg(D.lanes[0]))} vs ${D.dates[bi()]} · Drewry</div></div>
+<div class="c k"><h2>Shanghai port wait</h2><div class="v n up">38 h</div><div class="s">from 97 h in wk38 (−61%) · Drewry wk42</div></div>
+<div class="c k"><h2>India merch. exports, Sep</h2><div class="v n up">$44.40B</div><div class="s">+23.04% YoY · deficit $30.21B · MoCI 15 Oct</div></div></div>
+<div class="g g2"><div class="c"><h2>WCI spot, selected lanes (USD/FEU)</h2>${line(L.map(l=>({n:l.id,v:l.a.slice(0,3),x:D.dates})))}<div class="s">Only the dates Drewry values could be retrieved for; uneven spacing (20 Aug, 8 Oct, 22 Oct). ${a(D.src[0][2],"Drewry")}</div></div>
+<div class="c brief"><h2>Daily brief · 24 Oct 2026</h2>
+<div><b>WHAT'S MOVING</b><br>WCI up two weeks running to $4,585. Asia–Europe rising off a low (SHA–RTM ${pc(chg(D.lanes[2]))} vs ${D.dates[bi()]}); transpacific stays high (SHA–LAX $8,007).</div>
+<div><b>WHY IT MATTERS</b><br>Carriers are blanking sailings (8 on Asia–Europe next week vs 2) and applying GRIs ahead of 2027 contract talks, while Suez returns add effective capacity. Rate moves are supply-side signals; they do not prove demand changed.</div>
+<div><b>WHAT TO WATCH</b><br>Whether blank sailings persist, Hormuz/Bab el-Mandeb incidents, and Suez transit counts (55 in wk42). Confidence: <span class="wa">medium</span>.</div></div></div>
+<div class="c"><h2>Attention feed</h2>
+<div><span class="dn">●</span> Hormuz: Iranian attacks stepped up; container ship sunk last week ${a(D.falls[5].lk,"Freightos")}</div>
+<div><span class="wa">●</span> Asia–Europe: 8 blank sailings announced next week (2 this week); expect slight rate rise ${a(D.src[0][2],"Drewry")}</div>
+<div><span class="wa">●</span> Red Sea return expected to complete in Q1 2027; raises 2027 overcapacity risk ${a(D.src[1][2],"Freightos")}</div>
+<div><span class="up">●</span> India: Sep exports +23%; first-half deficit still widening ($177.64B) ${a(D.opps[0].lk,"MoCI via press")}</div>
+<div><span class="wa">●</span> Baltic Exchange: Asia→USEC fell 10,754→9,927 in a week (separate index) ${a(D.falls[4].lk,"Baltic")}</div></div>`};
+R.opps=()=>{const def={t:"Change",d:-1,f:o=>o.v};const cols=[["Opportunity",o=>o.n],["Type",o=>o.t],["Metric",o=>o.m],["Change",o=>o.v],["Confidence",o=>o.cf]];
+const rows=srt(D.opps.filter(o=>(o.n+o.t+o.sc).toLowerCase().includes(q())),"opps",def);const s=sort.opps;s.f=(cols.find(c=>c[0]===s.t)||cols[3])[1];
+const o=rows[Math.min(sel,rows.length-1)];
+return `<div class="c"><h2>Opportunities radar · evidence-ranked; "Change" is the sourced growth figure where one exists (not a composite score)</h2><div class="sx"><table><tr>${th("opps",cols,def)}</tr>${rows.map((r,i)=>`<tr class="cl" data-r="${i}"><td>${r.n}</td><td>${r.t}</td><td>${r.m}</td><td class="n ${col(r.v)}">${r.v==null?"n/a":pc(r.v)}</td><td>${r.cf}</td></tr>`).join("")||`<tr><td colspan=5 class="empty">No matches.</td></tr>`}</table></div>
+${o?`<div class="det"><b>${o.n}</b> · ${o.sc}<br><b>Evidence:</b> ${o.ev}<br><b>Who could benefit:</b> ${o.who}<br><b>Risks / counter-evidence:</b> ${o.rk}<br><b>Note:</b> trade-flow growth ≠ demand ≠ commercial opportunity; the last is a hypothesis. ${a(o.lk)}</div>`:""}</div>
+<div class="c"><h2>Sourced change figures</h2>${hbars(D.opps.filter(o=>o.v!=null).map(o=>({l:o.n.slice(0,28),v:o.v})))}</div>`};
+R.falls=()=>{const def={t:"Change",d:1,f:x=>x.ch};const cols=[["Item",x=>x.n],["Change",x=>x.ch],["Basis",x=>x.b],["Class",x=>x.cl],["Kind",x=>x.kind]];
+const rows=srt(D.falls.filter(x=>(x.n+x.cl+x.kind).toLowerCase().includes(q())),"falls",def);const s=sort.falls;s.f=(cols.find(c=>c[0]===s.t)||cols[1])[1];const o=rows[Math.min(sel,rows.length-1)];
+const kc={"Sharp deterioration":"dn","Persistent decline":"dn","Emerging warning":"wa","Temporary volatility":"mu"};
+return `<div class="c"><h2>Hardest falls · price falls ≠ demand falls (see Kind)</h2><div class="sx"><table><tr>${th("falls",cols,def)}</tr>${rows.map((r,i)=>`<tr class="cl" data-r="${i}"><td>${r.n}</td><td class="n ${col(r.ch)}">${r.ch==null?"n/a":pc(r.ch)}</td><td>${r.b.replace("vs baseline","vs "+D.dates[bi()]).replace("vs 20 Aug","vs 20 Aug")}</td><td><span class="badge ${kc[r.cl]||"mu"}">${r.cl}</span></td><td>${r.kind}</td></tr>`).join("")||`<tr><td colspan=5 class="empty">No matches.</td></tr>`}</table></div>
+${o?`<div class="det"><b>${o.n}</b><br><b>Plausible driver:</b> ${o.dr}<br><b>Exposed:</b> ${o.ex}<br><b>Confirm / invalidate with:</b> ${o.cf}<br>Drivers are hypotheses, not established causes. ${a(o.lk)}</div>`:""}</div>`};
+R.freight=()=>{const L=lanes();return `<div class="g g2"><div class="c"><h2>Change since ${D.dates[bi()]} (WCI, USD/FEU)</h2>${hbars(D.lanes.filter(l=>chg(l)!=null).map(l=>({l:l.id,v:chg(l)})))}</div>
+<div class="c"><h2>Freightos FBX points quoted in weekly updates</h2><div class="sx"><table><tr><th>Lane</th><th>Points (USD/FEU)</th><th>Δ first→last</th></tr>${D.fbx.map(f=>`<tr><td>${f.n}</td><td class="n">${f.p.map(p=>p[0]+": "+p[1]).join(" · ")}</td><td class="n ${col(fchg(f))}">${pc(fchg(f))}</td></tr>`).join("")}</table></div><div class="s">FBX and WCI are different indices (methodology, ports, timing). Do not compare levels across them.</div></div></div>
+<div class="c"><h2>WCI lane table · 22 Oct 2026</h2><div class="sx"><table><tr><th>Lane</th><th>20 Aug</th><th>8 Oct</th><th>22 Oct</th><th>Δ vs ${D.dates[bi()]}</th></tr>${L.filter(l=>l.n.toLowerCase().includes(q())).map(l=>`<tr><td>${l.n}</td>${l.a.map(v=>`<td class="n">${v==null?"n/a":f0(v)}</td>`).join("")}<td class="n ${col(chg(l))}">${pc(chg(l))}</td></tr>`).join("")}</table></div>
+<div class="s">Capacity: Asia–Europe 8 blank sailings next week (from 2); transpacific 2 (from 6) per Drewry. Intra-Asia IACI $1,459 (+$6). Not available here: contract rates, GRI database, bunker surcharges, equipment imbalance. India lanes: no free published index found.</div></div>`};
+R.ports=()=>`<div class="c"><h2>Chokepoints & port indicators · latest verified</h2><div class="sx"><table><tr><th>Node</th><th>Latest reading</th><th>Source / date</th></tr>${D.chokes.filter(r=>r.join(" ").toLowerCase().includes(q())).map(r=>`<tr><td><span class="${r[3]}">●</span> ${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join("")||`<tr><td colspan=3 class="empty">No matches.</td></tr>`}</table></div>
+<div class="s">Status dot: green improving, amber developing/uncertain, red high risk, grey stale/unknown. No AIS feed is connected, so no map is shown. Current JNPT/Mundra/Chennai dwell and wait figures were not found in free sources; the India row is dated.</div></div>
+<div class="c"><h2>What to do with this</h2><div>• Gulf-bound cargo: check war-risk and routing before booking.<br>• W. India exporters: confirm terminal and rail slots; expect yard-density risk (hypothesis, dated reports).<br>• Asia–Europe importers: Suez return and blank sailings pull in opposite directions through Q1.</div></div>`;
+const LF=[["cargo","Cargo value (USD)",38000],["ins","Insurance %",0.3],["orig","Origin charges",320],["dest","Destination charges",410],["inl","Inland transport",380],["duty","Duty % (on CIF)",7.5],["free","Free days",5],["dd","Demurrage/day",140],["stor","Storage/day",90]];
+R.landed=()=>`<div class="g g2"><div class="c"><h2>Landed cost per FEU</h2><div id="wf"></div><div class="n" id="tot"></div><div class="s">Ocean leg uses a real Drewry WCI lane; every other input is an editable ASSUMPTION (no shipment data connected). Incoterms and tariff lines change the result. Not a quote.</div></div>
+<div class="c"><h2>Inputs (illustrative scenario, not a forecast)</h2><div class="f"><div><label>Ocean lane (WCI 22 Oct)</label><select id="lf">${D.lanes.filter(l=>l.a[2]).map(l=>`<option value="${l.a[2]}">${l.id} · $${f0(l.a[2])}</option>`).join("")}</select></div>
+<div><label>Freight shift %</label><input id="fs2" type="range" min="-30" max="40" value="0"><span class="n" id="v1">0%</span></div><div><label>Added delay (days)</label><input id="dd2" type="range" min="0" max="14" value="0"><span class="n" id="v2">0d</span></div></div>
+<div class="f">${LF.map(([k,t,d])=>`<div><label>${t}</label><input type="number" id="in_${k}" value="${d}" step="any"></div>`).join("")}</div></div></div>
+<div class="c"><h2>Shipment register</h2><div class="empty">No shipment feed connected. Live ETA, last-free-day and demurrage tracking need a carrier/TMS integration, so none is simulated here.</div></div>`;
+function calc(){const g=k=>+$("#in_"+k).value||0,fr=+$("#fs2").value,dl=+$("#dd2").value;$("#v1").textContent=fr+"%";$("#v2").textContent=dl+"d";
+const o=+$("#lf").value*(1+fr/100),ins=g("cargo")*g("ins")/100,duty=(g("cargo")+o+ins)*g("duty")/100,ex=Math.max(0,dl-g("free"));
+const it=[{l:"Ocean",v:o},{l:"Insur.",v:ins},{l:"Origin",v:g("orig")},{l:"Dest.",v:g("dest")},{l:"Inland",v:g("inl")},{l:"Duty",v:duty},{l:"Storage",v:ex*g("stor"),hot:1},{l:"Dem/Det",v:ex*g("dd"),hot:1}];
+const t=it.reduce((a,b)=>a+b.v,0);$("#wf").innerHTML=waterfall(it);$("#tot").innerHTML=`Total <b>$${f0(t)}</b> per FEU`}
+R.src=()=>`<div class="c"><h2>Data catalog · as of 24 Oct 2026</h2><div class="sx"><table><tr><th>Source</th><th>As of</th><th>Link</th><th>Coverage / limits</th></tr>${D.src.map(s=>`<tr><td>${s[0]}</td><td>${s[1]}</td><td>${a(s[2],"open")}</td><td>${s[3]}</td></tr>`).join("")}</table></div>
+<div class="s" style="margin-top:8px">This is a dated snapshot. Published pages cannot call external data APIs, so figures update only when the snapshot is rebuilt. Ask Claude to re-run the research and republish.</div></div>`;
+function draw(){document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.k===view));$("#v").innerHTML=`<div class="hd"><h1>${HD[view][0]}</h1><p>${HD[view][1]}</p></div>`+R[view]();
+if(view==="landed"){calc();$("#v").querySelectorAll("input,select").forEach(e=>e.addEventListener("input",calc))}}
+$("#nav").onclick=e=>{const b=e.target.closest("button");if(b){view=b.dataset.k;sel=0;draw()}};
+$("#fl").onchange=$("#fr").onchange=draw;$("#fs").oninput=()=>{sel=0;draw()};
+$("#th").onclick=()=>{const r=document.documentElement;r.dataset.theme=r.dataset.theme==="light"?"":"light"};
+$("#v").onclick=e=>{const h=e.target.closest("th[data-s]");if(h){const s=sort[h.dataset.s];s.d=s.t===h.dataset.i?-s.d:1;s.t=h.dataset.i;draw();return}
+const r=e.target.closest("tr[data-r]");if(r){sel=+r.dataset.r;draw()}};
+$("#dl").onclick=()=>{const m={pulse:D.lanes,freight:D.lanes}[view];let rows;
+if(m)rows=[["lane","20 Aug","8 Oct","22 Oct"],...D.lanes.map(l=>[l.n,...l.a.map(v=>v==null?"":v)])];
+else if(view==="opps")rows=[["opportunity","metric","change_pct"],...D.opps.map(o=>[o.n,o.m,o.v??""])];
+else if(view==="falls")rows=[["item","change_pct","basis","class","kind"],...D.falls.map(f=>[f.n,f.ch==null?"":f.ch.toFixed(1),f.b,f.cl,f.kind])];
+else if(view==="ports")rows=[["node","reading","source"],...D.chokes.map(r=>r.slice(0,3))];
+else if(view==="src")rows=[["source","as_of","url"],...D.src.map(s=>s.slice(0,3))];
+else{alert("Nothing to export in this view.");return}
+const csv=rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(",")).join("\n");
+const el=document.createElement("a");el.href="data:text/csv;charset=utf-8,"+encodeURIComponent("Snapshot 24 Oct 2026; see Sources tab\n"+csv);el.download=view+"-snapshot.csv";el.click()};
+draw();
+</script></body></html>
